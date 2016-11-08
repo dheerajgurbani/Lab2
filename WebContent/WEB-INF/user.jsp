@@ -10,10 +10,15 @@
 <form method="get" action="/userid">
 First Name<input type="text" id="firstname"/><br>
 Last Name <input type="text" id="lastname"/><br>
-Address <input type="text" id="address"/><br>
+Address<br>
+Street<input type="text" id="streetUser"/>
+City<input type="text" id="cityUser"/>
+State<input type="text" id="stateUsere"/>
+Zip<input type="text" id="zipUser"/>
+<br>
 Title <input type="text" id="title"/><br>
 Phone <input type="text" id="phone">
-<button type="submit" value="create">Create</button>
+<button type="submit" value="createUser">Create</button>
 </form>
 </body>
 </html>

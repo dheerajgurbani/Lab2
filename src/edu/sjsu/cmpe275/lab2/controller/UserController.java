@@ -8,8 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 	
 	@RequestMapping("/user")
-	public ModelAndView getUser(){
+	public ModelAndView createUser(){
 		ModelAndView model = new ModelAndView("user");
+		return model;
+	}
+	
+	@RequestMapping("/phone")
+	public ModelAndView createPhone(){
+		ModelAndView model = new ModelAndView("phone");
 		return model;
 	}
 }
