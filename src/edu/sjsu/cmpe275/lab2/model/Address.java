@@ -1,11 +1,41 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Address {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	String id;
 	String street;
     String city;
     String state;
     String zip;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+    
+    public Address() {
+		super();
+	}
+    
+	public Address(String id, String street, String city, String state, String zip) {
+		super();
+		this.id = id;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
+	
 	public String getStreet() {
 		return street;
 	}

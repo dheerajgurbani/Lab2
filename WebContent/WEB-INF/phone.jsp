@@ -11,10 +11,10 @@
 Phone Number<input type="text" id="phoneNumber"/><br>
 Description<input type="text" id="description"/><br>
 Address<br>
-Street<input type="text" id="streetPhone"/>
-City<input type="text" id="cityPhone"/>
-State<input type="text" id="statePhone"/>
-Zip<input type="text" id="zipPhone"/>
+Street<input type="text" id="street"/>
+City<input type="text" id="city"/>
+State<input type="text" id="state"/>
+Zip<input type="text" id="zip"/>
 <br>
 Assign User
 <button type="submit" value="createPhone">Create</button>

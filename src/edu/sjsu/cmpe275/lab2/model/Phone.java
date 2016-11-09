@@ -1,9 +1,19 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Phone {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
     private String number; 
+    private String description;
+    private Address address;
     public String getId() {
 		return id;
 	}
@@ -28,7 +38,6 @@ public class Phone {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	private String description;
-    private Address address;
+	
 
 }

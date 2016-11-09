@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="get" action="/userid">
-First Name<input type="text" id="firstname"/><br>
+<form method="post" action="CreateAddress">
+<!-- First Name<input type="text" id="firstname"/><br>
 Last Name <input type="text" id="lastname"/><br>
-Address<br>
-Street<input type="text" id="streetUser"/>
-City<input type="text" id="cityUser"/>
-State<input type="text" id="stateUsere"/>
-Zip<input type="text" id="zipUser"/>
+Address<br> -->
+Street<input type="text" id="street"/>
+City<input type="text" id="city"/>
+State<input type="text" id="state"/>
+Zip<input type="text" id="zip"/>
 <br>
 Title <input type="text" id="title"/><br>
 Phone <input type="text" id="phone">
