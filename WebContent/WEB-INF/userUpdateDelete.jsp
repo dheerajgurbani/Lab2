@@ -7,18 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method = "post" action="/275_lab2/welcome">>
-Phone Number<input type="text" name="phoneNumber"/><br>
-Description<input type="text" name="description"/><br>
+<form method="post" action="/275_lab2/welcome">
+First Name<input type="text" name ="firstname" value ="${user.firstname}"/><br>
+Last Name <input type="text" name="lastname" value ="${user.lastname}"/><br>
+Title <input type="text" name="title"/><br>
 Address<br>
 Street<input type="text" name="street"/>
 City<input type="text" name="city"/>
 State<input type="text" name="state"/>
 Zip<input type="text" name="zip"/>
-<br>
-Assign User
-<button type="submit" value="createPhone">Create</button>
-</form> 
-
 </body>
 </html>

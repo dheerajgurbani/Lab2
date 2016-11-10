@@ -7,17 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="CreateAddress">
-<!-- First Name<input type="text" id="firstname"/><br>
-Last Name <input type="text" id="lastname"/><br>
-Address<br> -->
-Street<input type="text" id="street"/>
-City<input type="text" id="city"/>
-State<input type="text" id="state"/>
-Zip<input type="text" id="zip"/>
+<form method="post" action="/275_lab2/welcome">
+First Name<input type="text" name ="firstname"/><br>
+Last Name <input type="text" name="lastname"/><br>
+Title <input type="text" name="title"/><br>
+Address<br>
+Street<input type="text" name="street"/>
+City<input type="text" name="city"/>
+State<input type="text" name="state"/>
+Zip<input type="text" name="zip"/>
 <br>
-Title <input type="text" id="title"/><br>
-Phone <input type="text" id="phone">
+<!-- Phone <input type="text" id="phone"> -->
 <button type="submit" value="createUser">Create</button>
 </form>
 </body>
