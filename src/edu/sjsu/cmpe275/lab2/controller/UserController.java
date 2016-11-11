@@ -19,7 +19,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/welcome", method = RequestMethod.POST )
+	@RequestMapping(value = "/welcom", method = RequestMethod.POST )
 	public ModelAndView createUserSuccess(@RequestParam("firstname") String firstname,
 											@RequestParam("lastname") String lastname,
 											@RequestParam("title") String title,
