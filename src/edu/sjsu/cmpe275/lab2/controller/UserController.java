@@ -1,4 +1,7 @@
 package edu.sjsu.cmpe275.lab2.controller;
+
+
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +17,9 @@ import edu.sjsu.cmpe275.lab2.model.User;
 
 @Controller
 public class UserController {
+
 	CreateUser cU = new CreateUser();
+	
 	@RequestMapping(value = "/user", method = RequestMethod.GET )
 	public ModelAndView createUser(){
 		ModelAndView model = new ModelAndView("user");
@@ -29,7 +34,7 @@ public class UserController {
 											@RequestParam("state") String state,
 											@RequestParam("zip") String zip,
 											@RequestParam("street") String street){
-		
+
 		cU.insert(firstname, lastname, title, city, state, zip, street);
 		
 		ModelAndView model = new ModelAndView("welcome");
@@ -42,6 +47,41 @@ public class UserController {
 		ModelAndView model = new ModelAndView("userUpdateDelete");
 		User userDetails = cU.getObjectById(userid);
 		model.addObject(userDetails);
+
+		return model;
+	}
+	
+	@RequestMapping(value = "user/{userid}?json=true", method = RequestMethod.GET )
+	public ModelAndView jsonUser(@PathVariable("userid")String userid){
+		JSONArray jArray = new JSONArray();
+		jArray = cU.getJsonById(userid);
+		/*User userDetails = cU.getJsonById(userid);*/
+		ModelAndView model = new ModelAndView("jsonUserDetails");
+		model.addObject(jArray);
+		return model;
+	}
+	
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST )
+	public ModelAndView updateUser(@RequestParam("firstname") String firstname,
+											@RequestParam("lastname") String lastname,
+											@RequestParam("title") String title,
+											@RequestParam("city") String city,
+											@RequestParam("state") String state,
+											@RequestParam("zip") String zip,
+											@RequestParam("street") String street,
+											@RequestParam("userId") String userId){
+		System.out.println("user "+ userId );
+		cU.update(firstname, lastname, title, city, state, zip, street, userId);
+		ModelAndView model = new ModelAndView("successfulUserUpdate");
+		/*model.addObject("welcomeMessage", "" +firstname+lastname+title+state+city+zip+street);*/
+		return model;
+	}
+	
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.DELETE )
+	public ModelAndView deleteUser(@RequestParam("userId") String userId,
+								   @RequestParam("addressId") String addressId){
+		cU.deleteObjectById(userId, addressId);
+		ModelAndView model = new ModelAndView("successfulDeletion");
 		return model;
 	}
 	

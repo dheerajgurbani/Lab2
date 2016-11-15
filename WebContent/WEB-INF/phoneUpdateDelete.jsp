@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD:WebContent/WEB-INF/phoneUpdateDelete.jsp
 <form method="post" action="/275_lab2/updatePhone">
 Phone Number<input type="text" name="phoneNumber"/ value="$(phone.number)"><br>
 Description<input type="text" name="description"/><br>
@@ -15,6 +16,24 @@ Street<input type="text" name="street"/>
 City<input type="text" name="city"/>
 State<input type="text" name="state"/>
 Zip<input type="text" name="zip"/>
+=======
+<form method="post" action="/275_lab2/updateUser">
+First Name<input type="text" name ="firstname" value ="${user.firstname}"/><br>
+Last Name <input type="text" name="lastname" value ="${user.lastname}"/><br>
+Title <input type="text" name="title" value = "${user.title}"/><br>
+Address<br>
+Street<input type="text" name="street" value = "${user.address.street}"/>
+City<input type="text" name="city" value = "${user.address.city}"/>
+State<input type="text" name="state" value = "${user.address.state}"/>
+Zip<input type="text" name="zip"value = "${user.address.zip}"/> 
+<input type = "hidden" name = "userId" value ="${user.id}">
+<button type="submit" value="updateUser">Update</button>
+</form>
+
+<form method = "delete" action = "/275_lab2/deleteUser">
+<input type = "hidden" name = "userId" value ="${user.id}">
+<button type="submit" value="deleteUser">Delete</button>
+>>>>>>> a610e7b8c1619f0d04685dcb052f4badbd3c4429:WebContent/WEB-INF/userUpdateDelete.jsp
 </form>
 </body>
 </html>
