@@ -3,16 +3,16 @@
 	<persistence-unit name="275_lab2" transaction-type="RESOURCE_LOCAL">
 	<class>edu.sjsu.cmpe275.lab2.model.User</class>
 	<class>edu.sjsu.cmpe275.lab2.model.Phone</class>
-	<class>edu.sjsu.cmpe275.lab2.model.Address</class>
+	<class>edu.sjsu.cmpe275.lab2.model.Address</class> 
 	<properties>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3143569"/>
          <property name="javax.persistence.jdbc.user" value="sql3143569"/>
          <property name="javax.persistence.jdbc.password" value="GJ6fnad3d8"/>
         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="eclipselink.logging.level" value="FINE"/>
-         <!-- <property name="eclipselink.ddl-generation" value="create-tables"/> -->
+         <property name="eclipselink.ddl-generation" value="create-tables"/> 
          
-         <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+         <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
          <property name="eclipselink.ddl-generation.output-mode" value="database" />
       
       
