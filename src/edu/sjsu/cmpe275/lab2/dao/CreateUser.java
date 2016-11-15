@@ -102,7 +102,7 @@ public class CreateUser {
 		
 	}
 
-	public JSONArray getJsonById(String userid) {
+	public User getJsonById(String userid) {
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
@@ -113,19 +113,11 @@ public class CreateUser {
 		  User user = new User();
 		  
 		  user = entitymanager.find(User.class, userid);
-		
-		  	JSONArray jArray = new JSONArray();
-		    /*JSONObject jObj = new JSONObject();
-		    jObj.put("firstname", user.getFirstname());
-		    jObj.put("lastname", user.getLastname());
-		    jObj.put("title", user.getTitle());
-		    jObj.put("city", address.getCity());
-		    jObj.put("state", address.getState());
-		    jObj.put("street", address.getStreet());
-		    jObj.put("zip", address.getZip());
-		    jArray.add(jObj);*/
-		  	jArray.add(user);
-		return jArray;
+		  	entitymanager.persist( user );
+		     entitymanager.getTransaction( ).commit( );
+		     entitymanager.close( );
+		     emfactory.close( );
+		  	return user;
 	}
 
 	
