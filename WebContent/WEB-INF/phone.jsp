@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method = "post" action="/275_lab2/welcome">>
+<form method = "post" action="/275_lab2/phoneDisplay">>
 Phone Number<input type="text" name="phoneNumber"/><br>
 Description<input type="text" name="description"/><br>
 Address<br>

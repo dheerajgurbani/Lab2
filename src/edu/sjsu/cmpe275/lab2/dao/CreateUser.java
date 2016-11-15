@@ -1,5 +1,4 @@
 package edu.sjsu.cmpe275.lab2.dao;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,11 +24,27 @@ public class CreateUser {
 	      address.setStreet(street);
 	      address.setZip(zip);
 	      user.setAddress(address);
-	      
 	      entitymanager.persist( address );
 	      entitymanager.persist( user );
 	      entitymanager.getTransaction( ).commit( );
 	      entitymanager.close( );
 	      emfactory.close( );
+	}
+	public User getObjectById(String userid) {
+	      
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
+	    EntityManager entitymanager = emfactory.createEntityManager( );
+	    entitymanager.getTransaction( ).begin( );
+	      
+	      Address address = new Address( ); 
+		  User user = new User();
+	   
+	 user = entitymanager.find(User.class, userid);	
+	 entitymanager.persist( address );
+     entitymanager.persist( user );
+     entitymanager.getTransaction( ).commit( );
+     entitymanager.close( );
+     emfactory.close( );
+	 return user;
 	}
 }
