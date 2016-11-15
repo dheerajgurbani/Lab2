@@ -21,7 +21,6 @@ public class CreatePhone {
 		addr.setStreet(street);
 		addr.setZip(zip);
 		phn.setAddress(addr);
-		entitymanager.persist( addr );
 	    entitymanager.persist( phn );
 	    entitymanager.getTransaction( ).commit( );
 	    entitymanager.close( );
@@ -33,12 +32,10 @@ public class CreatePhone {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      
-	      Address address = new Address( ); 
+	       
 		  Phone phone = new Phone();
 	   
 	 phone = entitymanager.find(Phone.class, phoneid);	
-	 entitymanager.persist( address );
      entitymanager.persist( phone );
      entitymanager.getTransaction( ).commit( );
      entitymanager.close( );
