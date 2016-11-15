@@ -24,13 +24,13 @@ public class CreateUser {
 	      user.setFirstname(firstname);
 	      user.setLastname(lastname);
 	      user.setTitle(title);
+	      
 	      address.setState(state);
 	      address.setStreet(street);
 	      address.setZip(zip);
 	      address.setCity(city);
 	      user.setAddress(address);
 	      
-	      entitymanager.persist( address );
 	      entitymanager.persist( user );
 	      entitymanager.getTransaction( ).commit( );
 	      entitymanager.close( );
@@ -43,11 +43,9 @@ public class CreateUser {
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
 	      
-	      Address address = new Address( ); 
 		  User user = new User();
 	   
 	 user = entitymanager.find(User.class, userid);	
-	 entitymanager.persist( address );
      entitymanager.persist( user );
      entitymanager.getTransaction( ).commit( );
      entitymanager.close( );
@@ -56,7 +54,7 @@ public class CreateUser {
 	}
 
 	public void update(String firstname, String lastname, String title, String city, String state, String zip,
-			String street, String userId, String addressId) {
+			String street, String userId) {
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
@@ -67,7 +65,6 @@ public class CreateUser {
 		  User user = new User();
 		
 		user = entitymanager.find(User.class, userId);
-		address =  entitymanager.find(Address.class, addressId);
 		
 		  user.setFirstname(firstname);
 	      user.setLastname(lastname);
@@ -76,6 +73,7 @@ public class CreateUser {
 	      address.setStreet(street);
 	      address.setZip(zip);
 	      address.setCity(city);
+	      user.setAddress(address);
 	      
 	      entitymanager.getTransaction().commit();
 	      entitymanager.close( );

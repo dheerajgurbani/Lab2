@@ -15,15 +15,13 @@ Address<br>
 Street<input type="text" name="street" value = "${user.address.street}"/>
 City<input type="text" name="city" value = "${user.address.city}"/>
 State<input type="text" name="state" value = "${user.address.state}"/>
-Zip<input type="text" name="zip"value = "${user.address.zip}"/>
+Zip<input type="text" name="zip"value = "${user.address.zip}"/> 
 <input type = "hidden" name = "userId" value ="${user.id}">
-<input type = "hidden" name = "addressId" value ="${user.address.id}">
 <button type="submit" value="updateUser">Update</button>
 </form>
 
 <form method = "delete" action = "/275_lab2/deleteUser">
 <input type = "hidden" name = "userId" value ="${user.id}">
-<input type = "hidden" name = "addressId" value ="${user.address.id}">
 <button type="submit" value="deleteUser">Delete</button>
 </form>
 </body>

@@ -63,10 +63,9 @@ public class UserController {
 											@RequestParam("state") String state,
 											@RequestParam("zip") String zip,
 											@RequestParam("street") String street,
-											@RequestParam("userId") String userId,
-											@RequestParam("addressId") String addressId){
-		System.out.println("user "+ userId + "address "+ addressId);
-		cU.update(firstname, lastname, title, city, state, zip, street, userId, addressId);
+											@RequestParam("userId") String userId){
+		System.out.println("user "+ userId );
+		cU.update(firstname, lastname, title, city, state, zip, street, userId);
 		ModelAndView model = new ModelAndView("successfulUserUpdate");
 		/*model.addObject("welcomeMessage", "" +firstname+lastname+title+state+city+zip+street);*/
 		return model;

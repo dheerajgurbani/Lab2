@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe275.lab2.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Phone {
 	private String id;
     private String number; 
     private String description;
+    @Embedded
     private Address address;
     public String getId() {
 		return id;

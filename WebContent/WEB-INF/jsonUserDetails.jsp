@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
- controller.fetch_user obj = new controller.fetch_user();
- obj.get_user();
-%>
+
 </body>
 </html>
