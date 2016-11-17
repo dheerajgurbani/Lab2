@@ -2,20 +2,12 @@ package edu.sjsu.cmpe275.lab2.controller;
 
 
 import java.io.IOException;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.codehaus.jackson.*;
-import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -63,7 +55,7 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "userJ/{userid}", method = RequestMethod.GET )
+	@RequestMapping(value = "user/{userid}"+"json=true", method = RequestMethod.GET )
 	public ModelAndView jsonUser(@PathVariable("userid")String userid){
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -86,51 +78,7 @@ public class UserController {
 		model.addObject("userdetails", jsonString);
 		return model;
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
-	    EntityManager entitymanager = emfactory.createEntityManager( );
-	    entitymanager.getTransaction( ).begin( );
-	    
-	   
-	    User user = entitymanager.find(User.class, userid);
-	    ObjectMapper mapper = new ObjectMapper();
-	    
-	    
-	    
-		JSONArray jArray = new JSONArray();
-		jArray = cU.getJsonById(userid);
-		User userDetails = cU.getJsonById(userid);
-		ModelAndView model = new ModelAndView("jsonUserDetails");
-		model.addObject(jArray);
-		return model;
-	    
-		User user = new User();
-		  
-		  //user = entitymanager.find(User.class, userid);
-		  entitymanager.getTransaction().commit();
-	      entitymanager.close( );
-	      emfactory.close( );
-		  String jsonInString = mapper.writeValueAsString(user);
-		  return user;
 
-		
-	}*/
-	
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST )
 	public ModelAndView updateUser(@RequestParam("firstname") String firstname,
 											@RequestParam("lastname") String lastname,
