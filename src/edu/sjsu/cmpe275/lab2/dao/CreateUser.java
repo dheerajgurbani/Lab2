@@ -82,23 +82,25 @@ public class CreateUser {
 	      emfactory.close( );	
 	}
 
-	public void deleteObjectById(String userId, String addressId) {
+	public void deleteObjectById(String userId) {
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
 	      
-	      Address address = new Address( ); 
-		  User user = new User();
+//	      Address address = new Address( ); 
+//		  
+	    User user = new User();
 		  
 		  user = entitymanager.find(User.class, userId);
-		  address = entitymanager.find(Address.class, addressId);
+		  //address = entitymanager.find(Address.class);
 		 
-		  entitymanager.getTransaction().begin();
+//		  entitymanager.getTransaction().begin();
 		  entitymanager.remove(user);
-		  entitymanager.remove(address);
+		  //entitymanager.remove(address);
 		  entitymanager.getTransaction().commit();
+		  entitymanager.close();
 		
 	}
 

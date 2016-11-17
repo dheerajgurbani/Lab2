@@ -91,15 +91,15 @@ public class UserController {
 		System.out.println("user "+ userId );
 		cU.update(firstname, lastname, title, city, state, zip, street, userId);
 		ModelAndView model = new ModelAndView("successfulUserUpdate");
-		/*model.addObject("welcomeMessage", "" +firstname+lastname+title+state+city+zip+street);*/
 		return model;
 	}
 	
-	@RequestMapping(value = "/deleteUser", method = RequestMethod.DELETE )
-	public ModelAndView deleteUser(@RequestParam("userId") String userId,
-								   @RequestParam("addressId") String addressId){
-		cU.deleteObjectById(userId, addressId);
+	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )
+	public ModelAndView deleteUser(@PathVariable  String userId){
+		System.out.println("i delete aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		cU.deleteObjectById(userId);
 		ModelAndView model = new ModelAndView("successfulDeletion");
+		
 		return model;
 	}
 	

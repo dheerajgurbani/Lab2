@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -20,9 +21,21 @@ Zip<input type="text" name="zip"value = "${user.address.zip}"/>
 <button type="submit" value="updateUser">Update</button>
 </form>
 
-<form method = "delete" action = "/275_lab2/deleteUser">
-<input type = "hidden" name = "userId" value ="${user.id}">
-<button type="submit" value="deleteUser">Delete</button>
-</form>
+<button  value="deleteUser" onclick="deleteUser()">Delete</button>
 </body>
+
+<script>
+function deleteUser(){
+	
+$.ajax({
+	
+    url: '/275_lab2/user/${user.id}',
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+       
+    }
+});
+}
+</script>
 </html>
