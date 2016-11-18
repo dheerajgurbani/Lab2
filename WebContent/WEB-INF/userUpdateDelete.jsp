@@ -37,9 +37,10 @@ function updateUserDetails() {
 	//var formaction = $('#updateuserform').attr('action');
 	//alert(formaction);
 	var userform = "/275_lab2/user/" + userid +"?firstname="+name+"&lastname="+last+"&title="+title+"&street="+street+"&city="+city+"&state="+state+"&zip="+zip;
-	//console.log("/275_lab2/------------------------->"+userform);
+	console.log("/275_lab2/------------------------->"+userform);
 	alert(userform);
 	$("#updateuserform").attr("action",userform);
+	console.log("/275_lab2/------------------------->"+userform);
 	
 }
 </script>

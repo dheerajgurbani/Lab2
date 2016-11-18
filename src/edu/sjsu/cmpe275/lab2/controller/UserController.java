@@ -83,16 +83,19 @@ public class UserController {
 
 	//@RequestMapping(value = "/updateUser", method = RequestMethod.POST )
 	@RequestMapping(value="/user/{userid}" ,method = RequestMethod.POST)
-	public ModelAndView updateUser(
-											@PathVariable("userid") String userId,
-											@RequestParam Map<String, String> req){
+	public ModelAndView updateUser(@PathVariable("userid") String userId,@RequestParam Map<String, String> req){
 		System.out.println("Results are Shown here ----------->"+ req.get("firstname") );
 		cU.update(req.get("firstname"), req.get("lastname"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), userId);
 		//cU.update(firstname, lastname, title, city, state, zip, street, userId);
 		//ModelAndView model = new ModelAndView("successfulUserUpdate");
 		//return model;
-		return new ModelAndView("redirect:" + "/user/{userid}");
-	}
+/*		return new ModelAndView("redirect:" + "/user/{userid}");
+*/	ModelAndView model = new ModelAndView("afterUserUpdate");
+User userDetails = cU.getObjectById(userId);
+model.addObject(userDetails);
+
+return model;
+		}
 	
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )
 	public ModelAndView deleteUser(@PathVariable  String userId){
