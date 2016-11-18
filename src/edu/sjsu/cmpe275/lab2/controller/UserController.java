@@ -2,6 +2,8 @@ package edu.sjsu.cmpe275.lab2.controller;
 
 
 import java.io.IOException;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+//import com.sun.javafx.collections.MappingChange.Map;
 import edu.sjsu.cmpe275.lab2.dao.CreateUser;
 import edu.sjsu.cmpe275.lab2.model.User;
 
@@ -79,19 +81,17 @@ public class UserController {
 		return model;
 	}
 
-	@RequestMapping(value = "/updateUser", method = RequestMethod.POST )
-	public ModelAndView updateUser(@RequestParam("firstname") String firstname,
-											@RequestParam("lastname") String lastname,
-											@RequestParam("title") String title,
-											@RequestParam("city") String city,
-											@RequestParam("state") String state,
-											@RequestParam("zip") String zip,
-											@RequestParam("street") String street,
-											@RequestParam("userId") String userId){
-		System.out.println("user "+ userId );
-		cU.update(firstname, lastname, title, city, state, zip, street, userId);
-		ModelAndView model = new ModelAndView("successfulUserUpdate");
-		return model;
+	//@RequestMapping(value = "/updateUser", method = RequestMethod.POST )
+	@RequestMapping(value="/user/{userid}" ,method = RequestMethod.POST)
+	public ModelAndView updateUser(
+											@PathVariable("userid") String userId,
+											@RequestParam Map<String, String> req){
+		System.out.println("Results are Shown here ----------->"+ req.get("firstname") );
+		cU.update(req.get("firstname"), req.get("lastname"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), userId);
+		//cU.update(firstname, lastname, title, city, state, zip, street, userId);
+		//ModelAndView model = new ModelAndView("successfulUserUpdate");
+		//return model;
+		return new ModelAndView("redirect:" + "/user/{userid}");
 	}
 	
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )

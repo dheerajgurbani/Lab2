@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe275.lab2.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +60,26 @@ public class PhoneController {
 		ModelAndView model = new ModelAndView("phoneUpdateDelete");
 		Phone phoneDetails = pU.getObjectById(phoneid);
 		model.addObject(phoneDetails);
+		return model;
+	}
+	
+	@RequestMapping(value="/phone/{phoneid}" ,method = RequestMethod.POST)
+	public ModelAndView updatePhone(
+											@PathVariable("phoneid") String phoneId,
+											@RequestParam Map<String, String> req){
+		System.out.println("Phone Results are Shown here ----------->"+ req.get("number") );
+		pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), phoneId);
+		//cU.update(firstname, lastname, title, city, state, zip, street, userId);
+		ModelAndView model = new ModelAndView("successfulUserUpdate");
+		return model;
+	}
+	
+	@RequestMapping(value = "/phone/{phoneId}", method = RequestMethod.DELETE )
+	public ModelAndView deleteUser(@PathVariable  String phoneId){
+		System.out.println("Phone Deletion getting called in controller <<<< ------   here  ");
+		pU.deleteObjectById(phoneId);
+		ModelAndView model = new ModelAndView("successfulDeletion");
+		
 		return model;
 	}
 	

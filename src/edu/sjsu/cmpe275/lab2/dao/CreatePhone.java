@@ -6,6 +6,7 @@ import javax.persistence.Persistence;
 
 import edu.sjsu.cmpe275.lab2.model.Address;
 import edu.sjsu.cmpe275.lab2.model.Phone;
+import edu.sjsu.cmpe275.lab2.model.User;
 
 public class CreatePhone {
 	public void insert(String number, String description, String city, String state, String zip, String street) {
@@ -41,6 +42,46 @@ public class CreatePhone {
      entitymanager.close( );
      emfactory.close( );
 	 return phone;
+	}
+	
+	public void updatePhone(String number, String description, String title, String city, String state, String zip,
+			String street, String phoneId) {
+		// TODO Auto-generated method stub
+		
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
+	    EntityManager entitymanager = emfactory.createEntityManager( );
+	    entitymanager.getTransaction( ).begin( );
+	      
+	      Address address = new Address( ); 
+		  Phone phone = new Phone();
+		
+		  phone = entitymanager.find(Phone.class, phoneId);
+		
+		  phone.setNumber(number);
+	      phone.setDescription(description);
+	      address.setState(state);
+	      address.setStreet(street);
+	      address.setZip(zip);
+	      address.setCity(city);
+	      phone.setAddress(address);
+	      
+	      entitymanager.getTransaction().commit();
+	      entitymanager.close( );
+	      emfactory.close( );	
+	}
+	
+	
+	public void deleteObjectById(String phoneId) {
+		// TODO Auto-generated method stub
+		
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
+	    EntityManager entitymanager = emfactory.createEntityManager( );
+	    entitymanager.getTransaction( ).begin( );
+	      Phone phone = new Phone();
+		  phone = entitymanager.find(Phone.class, phoneId);
+		  entitymanager.remove(phone);
+		  entitymanager.getTransaction().commit();
+		  entitymanager.close();
 	}
 	
 	
