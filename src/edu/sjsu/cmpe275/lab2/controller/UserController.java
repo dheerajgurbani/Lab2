@@ -3,7 +3,8 @@ package edu.sjsu.cmpe275.lab2.controller;
 
 import java.io.IOException;
 import java.util.Map;
-
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,11 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.sun.javafx.collections.MappingChange.Map;
 import edu.sjsu.cmpe275.lab2.dao.CreateUser;
 import edu.sjsu.cmpe275.lab2.model.User;
-
-
 
 @Controller
 public class UserController {
@@ -49,11 +47,24 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "user/{userid}", method = RequestMethod.GET )
-	public ModelAndView updateDeleteUser(@PathVariable("userid")String userid){
-		ModelAndView model = new ModelAndView("userUpdateDelete");
+	public ModelAndView updateDeleteUser(@PathVariable("userid")String userid,
+			HttpServletResponse httpRes){
+		ModelAndView model = null;
 		User userDetails = cU.getObjectById(userid);
-		model.addObject(userDetails);
-
+		System.out.println("USer Detais NULL -->              "+userDetails);
+		
+		//System.out.println("USer Detais along with ID -->              "+userDetails.getId());
+		if(userDetails==null){
+			System.out.print("Eror page coming SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+			httpRes.setStatus( HttpServletResponse.SC_NOT_FOUND);
+			 model = new ModelAndView("errorPage");
+			 model.addObject("givenid", userid);
+		}else{
+			System.out.println("USer Detais along with ID -->              "+userDetails.getId());
+			 model = new ModelAndView("userUpdateDelete");
+			model.addObject(userDetails);
+			
+		}
 		return model;
 	}
 	
@@ -90,11 +101,11 @@ public class UserController {
 		//ModelAndView model = new ModelAndView("successfulUserUpdate");
 		//return model;
 /*		return new ModelAndView("redirect:" + "/user/{userid}");
-*/	ModelAndView model = new ModelAndView("afterUserUpdate");
-User userDetails = cU.getObjectById(userId);
-model.addObject(userDetails);
-
-return model;
+*/		ModelAndView model = new ModelAndView("afterUserUpdate");
+		User userDetails = cU.getObjectById(userId);
+		
+		model.addObject(userDetails);
+		return model;
 		}
 	
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )

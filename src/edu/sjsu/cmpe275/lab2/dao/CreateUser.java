@@ -41,19 +41,22 @@ public class CreateUser {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      
 
 	      Address address = new Address( ); 
 		  User user = new User();
 	   
 	 user = entitymanager.find(User.class, userid);	
-	 System.out.println("all phone nos"+user.getPhones().size());
+	 //System.out.println("all phone nos"+user.getPhones().size());
 
-     entitymanager.persist( user );
-     entitymanager.getTransaction( ).commit( );
-     entitymanager.close( );
-     emfactory.close( );
-	 return user;
+	    
+	    if(user==null)
+	    	return null;
+	    entitymanager.persist( user );
+	    entitymanager.getTransaction( ).commit( );
+	    entitymanager.close( );
+	    emfactory.close( );
+	    return user;
+
 	}
 
 	public void update(String firstname, String lastname, String title, String city, String state, String zip,
@@ -63,11 +66,9 @@ public class CreateUser {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      
-	      Address address = new Address( ); 
-		  User user = new User();
-		
-		user = entitymanager.find(User.class, userId);
+	     Address address = new Address( ); 
+		 User user = new User();
+		 user = entitymanager.find(User.class, userId);
 		
 		  user.setFirstname(firstname);
 	      user.setLastname(lastname);
@@ -113,6 +114,7 @@ public class CreateUser {
 	    entitymanager.getTransaction( ).begin( );
 	      
 	      Address address = new Address( ); 
+	     
 		  User user = new User();
 		  
 		  user = entitymanager.find(User.class, userid);
@@ -122,7 +124,5 @@ public class CreateUser {
 		     emfactory.close( );
 		  	return user;
 	}
-
-	
 }
 
