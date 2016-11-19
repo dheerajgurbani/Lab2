@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> 
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,9 +23,13 @@ Zip<input type="text" id="userzip" name="zip"value = "${user.address.zip}"/>
 <button type="submit" value="updateUser" onclick="updateUserDetails()">Update User Details</button>
 </form>
 
-<script>
+<c:forEach items="${user.phones}" var="phonesAssignedToUser">
+        	<br>
+        	${phonesAssignedToUser}
+</c:forEach> 
+
+ <script>
 function updateUserDetails() {
-	alert("hi");
 	var userid = document.getElementById("userid").value;
 	var name = document.getElementById("name").value;
 	var last = document.getElementById("last").value;
@@ -37,14 +42,11 @@ function updateUserDetails() {
 	//var formaction = $('#updateuserform').attr('action');
 	//alert(formaction);
 	var userform = "/275_lab2/user/" + userid +"?firstname="+name+"&lastname="+last+"&title="+title+"&street="+street+"&city="+city+"&state="+state+"&zip="+zip;
-	console.log("/275_lab2/------------------------->"+userform);
-	alert(userform);
+	//console.log("/275_lab2/------------------------->"+userform);
 	$("#updateuserform").attr("action",userform);
-	console.log("/275_lab2/------------------------->"+userform);
 	
 }
 </script>
-
 <button  value="deleteUser" onclick="deleteUser()">Delete</button>
 </body>
 

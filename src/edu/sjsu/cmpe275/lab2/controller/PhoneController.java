@@ -68,7 +68,8 @@ public class PhoneController {
 											@PathVariable("phoneid") String phoneId,
 											@RequestParam Map<String, String> req){
 		System.out.println("Phone Results are Shown here ----------->"+ req.get("number") );
-		pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), phoneId);
+		System.out.println(req.get("userId"));
+		pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), req.get("userId"), phoneId);
 		//cU.update(firstname, lastname, title, city, state, zip, street, userId);
 		ModelAndView model = new ModelAndView("successfulUserUpdate");
 		return model;

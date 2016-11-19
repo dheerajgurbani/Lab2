@@ -16,7 +16,6 @@ City<input type="text" name="city"/>
 State<input type="text" name="state"/>
 Zip<input type="text" name="zip"/>
 <br>
-Assign User
 <button type="submit" value="createPhone">Create</button>
 </form> 
 

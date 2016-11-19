@@ -1,5 +1,8 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -37,6 +40,8 @@ public class CreatePhone {
 		  Phone phone = new Phone();
 	   
 	 phone = entitymanager.find(Phone.class, phoneid);	
+	 System.out.println("users in phone"+phone.getUser().size());
+	 System.out.println("i am there");
      entitymanager.persist( phone );
      entitymanager.getTransaction( ).commit( );
      entitymanager.close( );
@@ -45,18 +50,27 @@ public class CreatePhone {
 	}
 	
 	public void updatePhone(String number, String description, String title, String city, String state, String zip,
-			String street, String phoneId) {
+			String street, String userId, String phoneId) {
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      
+	      System.out.println("i am here");
 	      Address address = new Address( ); 
 		  Phone phone = new Phone();
-		
+		  
+
 		  phone = entitymanager.find(Phone.class, phoneId);
-		
+		  User user = entitymanager.find(User.class, userId);
+		  List<User> lU = new ArrayList<>();
+		  lU = phone.getUser();
+		  lU.add(user);
+		  phone.setUser(lU);
+		  System.out.println("phone uopdate"+phone.getUser());
+		  
+		  /*phone.getUser().add(user);*/
+		  
 		  phone.setNumber(number);
 	      phone.setDescription(description);
 	      address.setState(state);

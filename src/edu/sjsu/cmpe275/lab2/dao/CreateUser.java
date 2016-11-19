@@ -47,6 +47,7 @@ public class CreateUser {
 		  User user = new User();
 	   
 	 user = entitymanager.find(User.class, userid);	
+	 System.out.println("all phone nos"+user.getPhones().size());
 
      entitymanager.persist( user );
      entitymanager.getTransaction( ).commit( );
