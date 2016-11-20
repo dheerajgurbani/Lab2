@@ -24,6 +24,7 @@ Zip<input type="text" id="phonezip" name="zip" value="${phone.address.zip}"/>
         	<br>
         	<input type="radio" name="phoneUserElement" value="${phoneUser}">${phoneUser}
 </c:forEach> 
+<button type="submit" value="updateUser" onclick="updatePhoneDetails()">Remove User</button>
 
 <script>
 function removeUser()
@@ -34,8 +35,9 @@ function removeUser()
 
 
 Add user by id<input type = "text" name = "userId" id = "userId"/>
-<input type = "hidden" id="phoneid" name = "phoneId" value ="${phone.id}">
+<input type = "hidden" id="phoneid" name = "phoneId" value ="${phone.id}"><button type="submit" value="updateUser" onclick="updatePhoneDetails()">Add User</button>
 <button type="submit" value="updateUser" onclick="updatePhoneDetails()">Update Phone Details</button>
+
 </form>
 
 <!-- <script>
