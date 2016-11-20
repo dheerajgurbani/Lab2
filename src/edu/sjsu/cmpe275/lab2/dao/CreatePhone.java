@@ -100,9 +100,11 @@ public class CreatePhone {
 	    entitymanager.getTransaction( ).begin( );
 	      Phone phone = new Phone();
 		  phone = entitymanager.find(Phone.class, phoneId);
+		 if(phone.getUser().size()== 0){
 		  entitymanager.remove(phone);
 		  entitymanager.getTransaction().commit();
 		  entitymanager.close();
+		 }
 	}
 	
 	

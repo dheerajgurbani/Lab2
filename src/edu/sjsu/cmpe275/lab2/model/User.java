@@ -28,7 +28,6 @@ public class User {
     private Address address;
     @ManyToMany(mappedBy="user", fetch=FetchType.LAZY)
    private List<Phone> phones;
-	
 	public User() {
 	}
 	public User(String id, String firstname, String lastname, String title, Address address, List<Phone> phones) {
