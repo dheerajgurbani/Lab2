@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Sorry, the requested user with ID ${givenid} does not exist </h2>
+<h2>Sorry, the requested Phone with ID ${givenid} does not exist</h2>
 </body>
 </html>

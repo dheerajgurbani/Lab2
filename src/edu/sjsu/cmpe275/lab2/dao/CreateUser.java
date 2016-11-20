@@ -14,7 +14,7 @@ import org.json.simple.*;
 public class CreateUser {	
 	
 	 
-	public void insert(String firstname, String lastname, String title, String city, String state, String zip, String street) {
+	public void insert(String id, String firstname, String lastname, String title, String city, String state, String zip, String street) {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
@@ -22,7 +22,7 @@ public class CreateUser {
 	      
 	      Address address = new Address( ); 
 		  User user = new User();
-	     
+		  user.setId(id);
 	      user.setFirstname(firstname);
 	      user.setLastname(lastname);
 	      user.setTitle(title);

@@ -7,17 +7,21 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body style="text-align: center;">
+<h1>PHONE UDATION AND DELETION</h1><br><br>
 <form id="updatephoneform" method="post">
-Phone Number<input type="text" id="number" name="phoneNumber" value="${phone.number}"><br>
-Description<input type="text" id="phonedescription" name="description" value="${phone.description}"/><br>
-Address<br>
-Street<input type="text" id="streetaddr" name="street" value="${phone.address.street}"/>
-City<input type="text" id="phonecity" name="city" value="${phone.address.city}"/>
-State<input type="text" id="phonestate" name="state" value="${phone.address.state}"/>
-Zip<input type="text" id="phonezip" name="zip" value="${phone.address.zip}"/>
+Phone Number &nbsp; &nbsp;<input type="text" id="number" name="phoneNumber" value="${phone.number}">
+Description &nbsp; &nbsp;<input type="text" id="phonedescription" name="description" value="${phone.description}"/><br><br>
+Address Assigned to this Phone Number<br><br>
+Street &nbsp; &nbsp;<input type="text" id="streetaddr" name="street" value="${phone.address.street}"/>
+City &nbsp; &nbsp;<input type="text" id="phonecity" name="city" value="${phone.address.city}"/><br><br>
+State &nbsp; &nbsp;<input type="text" id="phonestate" name="state" value="${phone.address.state}"/>
+Zip &nbsp; &nbsp;<input type="text" id="phonezip" name="zip" value="${phone.address.zip}"/><br><br>
 
 
 <c:forEach items="${phone.user}" var="phoneUser">
@@ -35,7 +39,7 @@ function removeUser()
 
 
 Add user by id<input type = "text" name = "userId" id = "userId"/>
-<input type = "hidden" id="phoneid" name = "phoneId" value ="${phone.id}"><button type="submit" value="updateUser" onclick="updatePhoneDetails()">Add User</button>
+<input type = "hidden" id="phoneid" name = "phoneId" value ="${phone.id}"><button type="submit" value="updateUser" onclick="updatePhoneDetails()">Add User</button><br><br>
 <button type="submit" value="updateUser" onclick="updatePhoneDetails()">Update Phone Details</button>
 
 </form>
@@ -58,7 +62,9 @@ function updatePhoneDetails() {
 	
 }
 </script>
- --><button  value="deletePhone" onclick="deletePhone()">Delete Phone number</button>
+ -->
+ 
+ <br><button  value="deletePhone" onclick="deletePhone()">Delete Phone number</button>
 </body>
 
 <script>

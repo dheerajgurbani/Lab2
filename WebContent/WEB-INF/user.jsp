@@ -4,21 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
-<form method="post" action="/275_lab2/welcome">
-First Name<input type="text" name ="firstname"/><br>
-Last Name <input type="text" name="lastname"/><br>
-Title <input type="text" name="title"/><br>
-Address<br>
-Street<input type="text" name="street"/>
-City<input type="text" name="city"/>
-State<input type="text" name="state"/>
-Zip<input type="text" name="zip"/>
-<br>
+<body style="text-align: center;">
+<h1>USER REGISTRATION</h1><br><br>
+<form method="post" action="/275_lab2/user">
+First Name&nbsp; &nbsp;<input type="text" name ="firstname" />
+Last Name &nbsp; &nbsp; <input type="text" name="lastname"/>
+Title &nbsp; &nbsp;<input type="text" name="title"/><br><br><br>
+Address Assigned to this User<br><br>
+Street &nbsp; &nbsp;<input type="text" name="street"/>
+City &nbsp; &nbsp;<input type="text" name="city"/><br><br>
+State &nbsp; &nbsp;<input type="text" name="state"/>
+Zip &nbsp; &nbsp;<input type="text" name="zip"/>
+<br><br><br>
 <!-- Phone <input type="text" id="phone"> -->
-<button type="submit" value="createUser">Create</button>
+&nbsp; &nbsp;&nbsp; &nbsp;<button type="submit" value="createUser">Create User</button>
 </form>
 </body>
 </html>

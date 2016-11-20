@@ -2,6 +2,8 @@ package edu.sjsu.cmpe275.lab2.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,28 +41,44 @@ public class PhoneController {
 		model.addObject("welcomeMessage", "" +phoneNumber+description+state+city+zip+street);
 		return model;
 	}*/
-	@RequestMapping(value = "/phoneDisplay", method = RequestMethod.POST )
-	public ModelAndView createPhoneSuccess(@RequestParam("phoneNumber") String phoneNumber,
+	@RequestMapping(value = "/phone", method = RequestMethod.POST )
+	public String createPhoneSuccess(@RequestParam("phoneNumber") String phoneNumber,
 											
 											@RequestParam("description") String description,
 											@RequestParam("city") String city,
 											@RequestParam("state") String state,
 											@RequestParam("zip") String zip,
 											@RequestParam("street") String street){
+		String id = Long.toString(System.currentTimeMillis());
+		pU.insert(id,phoneNumber, description, city, state, zip, street);
 		
-		pU.insert(phoneNumber, description, city, state, zip, street);
-		
-		ModelAndView model = new ModelAndView("welcome");
+		/*ModelAndView model = new ModelAndView("welcome");
 		model.addObject("welcomeMessage", "" +phoneNumber+" "+description+" "+state+" "+city+" "+zip+" "+street);
-		return model;
+		return model;*/
+		return "redirect:/phone/" + id;
 	}
 	
 	@RequestMapping(value = "phone/{phoneid}", method = RequestMethod.GET )
-	public ModelAndView updateDeletePhone(@PathVariable("phoneid")String phoneid){
+	public ModelAndView updateDeletePhone(@PathVariable("phoneid")String phoneid, HttpServletResponse httpRes){
+		
+		ModelAndView model = null;
+		Phone phoneDetails = pU.getObjectById(phoneid);
+		if(phoneDetails==null){
+			httpRes.setStatus( HttpServletResponse.SC_NOT_FOUND);
+			 model = new ModelAndView("phoneErrorPage");
+			 model.addObject("givenid", phoneid);
+		}else{
+			 model = new ModelAndView("phoneUpdateDelete");
+			model.addObject(phoneDetails);
+			
+		}
+		return model;
+		
+		/*
 		ModelAndView model = new ModelAndView("phoneUpdateDelete");
 		Phone phoneDetails = pU.getObjectById(phoneid);
 		model.addObject(phoneDetails);
-		return model;
+		return model;*/
 	}
 	
 	@RequestMapping(value="/phone/{phoneid}" ,method = RequestMethod.POST)

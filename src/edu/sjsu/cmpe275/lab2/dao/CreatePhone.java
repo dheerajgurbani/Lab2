@@ -12,11 +12,12 @@ import edu.sjsu.cmpe275.lab2.model.Phone;
 import edu.sjsu.cmpe275.lab2.model.User;
 
 public class CreatePhone {
-	public void insert(String number, String description, String city, String state, String zip, String street) {
+	public void insert(String id,String number, String description, String city, String state, String zip, String street) {
 		EntityManagerFactory emfactory =  Persistence.createEntityManagerFactory( "275_lab2" );
 		EntityManager entitymanager = emfactory.createEntityManager( );
 		entitymanager.getTransaction( ).begin( );
 		Phone phn = new Phone();
+		phn.setId(id);
 		phn.setNumber(number);
 		phn.setDescription(description);
 		Address addr = new Address();
@@ -39,7 +40,9 @@ public class CreatePhone {
 	       
 		  Phone phone = new Phone();
 	   
-	 phone = entitymanager.find(Phone.class, phoneid);	
+	 phone = entitymanager.find(Phone.class, phoneid);
+	 if(phone==null)
+	    	return null;
 	 System.out.println("users in phone"+phone.getUser().size());
 	 System.out.println("i am there");
      entitymanager.persist( phone );
