@@ -50,7 +50,7 @@ public class CreatePhone {
 	}
 	
 	public void updatePhone(String number, String description, String title, String city, String state, String zip,
-			String street, String userId, String phoneId) {
+			String street, String userId, String removeUserId, String phoneId) {
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
@@ -63,10 +63,17 @@ public class CreatePhone {
 
 		  phone = entitymanager.find(Phone.class, phoneId);
 		  User user = entitymanager.find(User.class, userId);
-		  List<User> lU = new ArrayList<>();
+		  /*List<User> lU = new ArrayList<>();
 		  lU = phone.getUser();
 		  lU.add(user);
-		  phone.setUser(lU);
+		  phone.setUser(lU);*/
+		  
+		  phone.getUser().add(user);
+		  
+		  User removeUser = entitymanager.find(User.class, removeUserId);
+		  System.out.println("user to be removed");
+		  phone.getUser().remove(removeUser);
+		  
 		  System.out.println("phone uopdate"+phone.getUser());
 		  
 		  /*phone.getUser().add(user);*/
