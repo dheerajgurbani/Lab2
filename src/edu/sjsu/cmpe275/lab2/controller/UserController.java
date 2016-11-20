@@ -109,12 +109,14 @@ public class UserController {
 		}
 	
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )
-	public ModelAndView deleteUser(@PathVariable  String userId){
-		System.out.println("i delete aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		cU.deleteObjectById(userId);
-		ModelAndView model = new ModelAndView("successfulDeletion");
+	public String deleteUser(@PathVariable("userId")  String userId){
 		
-		return model;
+		System.out.println(userId +"i delete  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		cU.deleteObjectById(userId);
+		
+		//ModelAndView model = new ModelAndView("successfulDeletion");
+		
+		return "user";
 	}
 	
 }

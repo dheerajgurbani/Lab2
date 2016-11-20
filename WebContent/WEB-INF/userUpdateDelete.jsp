@@ -54,13 +54,14 @@ function updateUserDetails() {
 function deleteUser(){
 	
 $.ajax({
-	
-    url: '/275_lab2/user/${user.id}',
+	url: '/275_lab2/user/${user.id}',
     type: 'DELETE',
     success: function(result) {
-        // Do something with the result
-       
-    }
+    	alert("alert");
+    	window.location.assign("/275_lab2/user");
+       },
+	 error: function(err) { alert('This is user is deleted'); 
+	 window.location.assign("/275_lab2/user");}
 });
 }
 </script>

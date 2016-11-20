@@ -23,7 +23,8 @@ public class Phone {
 	private String id;
     private String number; 
     private String description;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch=FetchType.LAZY)
+    
     @JoinTable(
         name="Phone_User",
         joinColumns=@JoinColumn(name="Phone_ID", referencedColumnName="ID"),

@@ -26,9 +26,8 @@ public class User {
     private String title;
     @Embedded
     private Address address;
-    @ManyToMany(cascade=CascadeType.ALL, mappedBy="user", fetch=FetchType.LAZY)
+    @ManyToMany(mappedBy="user", fetch=FetchType.LAZY) 
    private List<Phone> phones;
-	
 	public User() {
 	}
 	public User(String id, String firstname, String lastname, String title, Address address, List<Phone> phones) {

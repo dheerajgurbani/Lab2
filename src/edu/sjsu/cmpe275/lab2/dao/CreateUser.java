@@ -1,9 +1,12 @@
 package edu.sjsu.cmpe275.lab2.dao;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import edu.sjsu.cmpe275.lab2.model.Address;
+import edu.sjsu.cmpe275.lab2.model.Phone;
 import edu.sjsu.cmpe275.lab2.model.User;
 
 import org.json.simple.*;
@@ -96,6 +99,14 @@ public class CreateUser {
 	    User user = new User();
 		  
 		  user = entitymanager.find(User.class, userId);
+		  
+		  List<Phone> phone = user.getPhones();
+		  for(Phone p : phone)
+		  {
+			  Phone pId = entitymanager.find(Phone.class, p.getId()); 
+			  pId.getUser().remove(user);
+		  }
+		  
 		  //address = entitymanager.find(Address.class);
 		 
 //		  entitymanager.getTransaction().begin();
