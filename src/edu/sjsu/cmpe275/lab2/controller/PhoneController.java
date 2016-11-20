@@ -72,12 +72,23 @@ public class PhoneController {
 		System.out.println("update post");
 		String selectedUser=  req.get("phoneUserElement");
 		System.out.println("multiple user"+selectedUser);
+		if(selectedUser == null)
+		{
+			pU.updatePhoneNoRemove(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), req.get("userId"), phoneId);
+
+		}
+		else
+		{
+			pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), req.get("userId"), req.get("phoneUserElement"), phoneId);
+		}
+		
+
 		/*for (int i = 0; i < selectedUser.length(); i++ )
 		{
 			System.out.println(selectedUser[i]);
 		}*/
 		/*System.out.println("selectedd user"+req.get("phoneUserElement"));*/
-		pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), req.get("userId"), req.get("phoneUserElement"), phoneId);
+		//pU.updatePhone(req.get("phoneNumber"), req.get("description"), req.get("title"), req.get("city"), req.get("state"), req.get("zip"), req.get("street"), req.get("userId"), req.get("phoneUserElement"), phoneId);
 		//cU.update(firstname, lastname, title, city, state, zip, street, userId);
 		ModelAndView model = new ModelAndView("successfulUserUpdate");
 		return model;

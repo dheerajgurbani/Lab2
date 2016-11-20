@@ -92,6 +92,54 @@ public class CreatePhone {
 	}
 	
 	
+	
+	
+	public void updatePhoneNoRemove(String number, String description, String title, String city, String state, String zip,
+			String street, String userId, String phoneId) {
+		// TODO Auto-generated method stub
+		
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
+	    EntityManager entitymanager = emfactory.createEntityManager( );
+	    entitymanager.getTransaction( ).begin( );
+	      System.out.println("i am here");
+	      Address address = new Address( ); 
+		  Phone phone = new Phone();
+		  
+
+		  phone = entitymanager.find(Phone.class, phoneId);
+		  User user = entitymanager.find(User.class, userId);
+		  /*List<User> lU = new ArrayList<>();
+		  lU = phone.getUser();
+		  lU.add(user);
+		  phone.setUser(lU);*/
+		  
+		  phone.getUser().add(user);
+		  
+		  /*User removeUser = entitymanager.find(User.class, removeUserId);
+		  System.out.println("user to be removed");
+		  phone.getUser().remove(removeUser);*/
+		  
+		  System.out.println("phone uopdate"+phone.getUser());
+		  
+		  /*phone.getUser().add(user);*/
+		  
+		  phone.setNumber(number);
+	      phone.setDescription(description);
+	      address.setState(state);
+	      address.setStreet(street);
+	      address.setZip(zip);
+	      address.setCity(city);
+	      phone.setAddress(address);
+	      
+	      entitymanager.getTransaction().commit();
+	      entitymanager.close( );
+	      emfactory.close( );	
+	}
+	
+
+	
+	
+	
 	public void deleteObjectById(String phoneId) {
 		// TODO Auto-generated method stub
 		

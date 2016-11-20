@@ -108,6 +108,17 @@ public class UserController {
 		return model;
 		}
 	
+	/*@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )
+	public String deleteUser(@PathVariable("userId")  String userId){
+		
+		System.out.println(userId +"i delete  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		cU.deleteObjectById(userId);
+		
+		//ModelAndView model = new ModelAndView("successfulDeletion");
+		
+		return "user";
+	}*/
+	
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE )
 	public String deleteUser(@PathVariable("userId")  String userId){
 		
@@ -118,6 +129,8 @@ public class UserController {
 		
 		return "user";
 	}
+	
+	
 	
 }
 

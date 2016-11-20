@@ -60,7 +60,7 @@ $.ajax({
     	alert("alert");
     	window.location.assign("/275_lab2/user");
        },
-	 error: function(err) { alert('This is user is deleted'); 
+	  error: function(err) { alert('This is user is deleted');  
 	 window.location.assign("/275_lab2/user");}
 });
 }
