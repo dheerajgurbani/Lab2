@@ -16,6 +16,8 @@ public class CreateUser {
 	 
 	public void insert(String id, String firstname, String lastname, String title, String city, String state, String zip, String street) {
 		// TODO Auto-generated method stub
+		/*entitymanager instance associated with persistence context*/
+		/*This method is called by User Controller for inserting User Details into Database*/
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
@@ -40,19 +42,20 @@ public class CreateUser {
 	}
 
 	public User getObjectById(String userid) {
+		
+		/*This method is called by User Controller for getting User Details from Database*/
 	      
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
 
+
 	     
 		  User user = new User();
-	   
-	 user = entitymanager.find(User.class, userid);	
-	 //System.out.println("all phone nos"+user.getPhones().size());
 
-	    
-	    if(user==null)
+	   
+		user = entitymanager.find(User.class, userid);	
+		if(user==null)
 	    	return null;
 	    entitymanager.persist( user );
 	    entitymanager.getTransaction( ).commit( );
@@ -66,6 +69,7 @@ public class CreateUser {
 			String street, String userId) {
 		// TODO Auto-generated method stub
 		
+		/*This method is called by User Controller for Updating User Details into Database*/
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
@@ -89,7 +93,7 @@ public class CreateUser {
 
 	public void deleteObjectById(String userId) {
 		// TODO Auto-generated method stub
-		
+		/*This method is called by User Controller for Deleting User Details from Database*/
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
@@ -123,17 +127,16 @@ public class CreateUser {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-		  
+
 	    System.out.println("user id"+userid);
-	    
-	    
-		  User user = entitymanager.find(User.class, userid);
+	    User user = entitymanager.find(User.class, userid);
 		  System.out.println("user object"+ user);
 		  	entitymanager.persist( user );
 		     entitymanager.getTransaction( ).commit( );
 		     entitymanager.close( );
 		     emfactory.close( );
 		  	return user;
+
 	}
 }
 

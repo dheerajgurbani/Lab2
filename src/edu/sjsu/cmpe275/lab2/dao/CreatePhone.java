@@ -13,6 +13,8 @@ import edu.sjsu.cmpe275.lab2.model.User;
 
 public class CreatePhone {
 	public void insert(String id,String number, String description, String city, String state, String zip, String street) {
+		/*entitymanager instance associated with persistence context*/
+		/*This method is called by Phone Controller for inserting Phone Details into Database*/
 		EntityManagerFactory emfactory =  Persistence.createEntityManagerFactory( "275_lab2" );
 		EntityManager entitymanager = emfactory.createEntityManager( );
 		entitymanager.getTransaction( ).begin( );
@@ -33,6 +35,8 @@ public class CreatePhone {
 	}
 	
 	public Phone getObjectById(String phoneid) {
+		
+		/*This method is called by Phone Controller for getting Phone Details from Database*/
 	      
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
@@ -54,6 +58,7 @@ public class CreatePhone {
 	
 	public void updatePhone(String number, String description, String title, String city, String state, String zip,
 			String street, String userId, String removeUserId, String phoneId) {
+		/*This method is called by Phone Controller for Updating Phone Details into Database*/
 		// TODO Auto-generated method stub
 		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
@@ -62,25 +67,12 @@ public class CreatePhone {
 	      System.out.println("i am here");
 	      Address address = new Address( ); 
 		  Phone phone = new Phone();
-		  
-
 		  phone = entitymanager.find(Phone.class, phoneId);
 		  User user = entitymanager.find(User.class, userId);
-		  /*List<User> lU = new ArrayList<>();
-		  lU = phone.getUser();
-		  lU.add(user);
-		  phone.setUser(lU);*/
-		  
 		  phone.getUser().add(user);
-		  
 		  User removeUser = entitymanager.find(User.class, removeUserId);
 		  System.out.println("user to be removed");
 		  phone.getUser().remove(removeUser);
-		  
-		  System.out.println("phone uopdate"+phone.getUser());
-		  
-		  /*phone.getUser().add(user);*/
-		  
 		  phone.setNumber(number);
 	      phone.setDescription(description);
 	      address.setState(state);
@@ -100,32 +92,16 @@ public class CreatePhone {
 	public void updatePhoneNoRemove(String number, String description, String title, String city, String state, String zip,
 			String street, String userId, String phoneId) {
 		// TODO Auto-generated method stub
-		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      System.out.println("i am here");
 	      Address address = new Address( ); 
 		  Phone phone = new Phone();
 		  
 
 		  phone = entitymanager.find(Phone.class, phoneId);
 		  User user = entitymanager.find(User.class, userId);
-		  /*List<User> lU = new ArrayList<>();
-		  lU = phone.getUser();
-		  lU.add(user);
-		  phone.setUser(lU);*/
-		  
 		  phone.getUser().add(user);
-		  
-		  /*User removeUser = entitymanager.find(User.class, removeUserId);
-		  System.out.println("user to be removed");
-		  phone.getUser().remove(removeUser);*/
-		  
-		  System.out.println("phone uopdate"+phone.getUser());
-		  
-		  /*phone.getUser().add(user);*/
-		  
 		  phone.setNumber(number);
 	      phone.setDescription(description);
 	      address.setState(state);
