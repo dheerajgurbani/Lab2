@@ -44,7 +44,6 @@ function updateUserDetails() {
 	var city = document.getElementById("usercity").value;
 	var state = document.getElementById("userstate").value;
 	var zip = document.getElementById('userzip').value;
-	alert(zip);
 	//var formaction = $('#updateuserform').attr('action');
 	//alert(formaction);
 	var userform = "/275_lab2/user/" + userid +"?firstname="+name+"&lastname="+last+"&title="+title+"&street="+street+"&city="+city+"&state="+state+"&zip="+zip;
@@ -64,7 +63,6 @@ $.ajax({
 	url: '/275_lab2/user/${user.id}',
     type: 'DELETE',
     success: function(result) {
-    	alert("alert");
     	window.location.assign("/275_lab2/user");
        },
 	  error: function(err) { alert('This is user is deleted');  

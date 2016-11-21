@@ -45,7 +45,7 @@ public class CreateUser {
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
 
-	      Address address = new Address( ); 
+	     
 		  User user = new User();
 	   
 	 user = entitymanager.find(User.class, userid);	
@@ -119,16 +119,16 @@ public class CreateUser {
 
 	public User getJsonById(String userid) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("i am in dao");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "275_lab2" );
 	    EntityManager entitymanager = emfactory.createEntityManager( );
 	    entitymanager.getTransaction( ).begin( );
-	      
-	      Address address = new Address( ); 
-	     
-		  User user = new User();
 		  
-		  user = entitymanager.find(User.class, userid);
+	    System.out.println("user id"+userid);
+	    
+	    
+		  User user = entitymanager.find(User.class, userid);
+		  System.out.println("user object"+ user);
 		  	entitymanager.persist( user );
 		     entitymanager.getTransaction( ).commit( );
 		     entitymanager.close( );

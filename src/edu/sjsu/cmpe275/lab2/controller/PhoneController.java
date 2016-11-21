@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe275.lab2.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.sjsu.cmpe275.lab2.dao.CreatePhone;
 import edu.sjsu.cmpe275.lab2.dao.CreateUser;
@@ -25,6 +30,35 @@ public class PhoneController {
 		ModelAndView model = new ModelAndView("phone");
 		return model;
 	}
+	@RequestMapping(value = "phoneJSON/{phoneid}", method = RequestMethod.GET )
+	public ModelAndView jsonUser(@PathVariable("phoneid")String phoneid){
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Phone phone = pU.getObjectById(phoneid);
+		
+		
+		System.out.println("in controller user object"+ phone);
+		
+		String jsonString = null;
+		
+		try {
+		jsonString = mapper.writeValueAsString(phone);
+		System.out.println(jsonString);
+		}
+		 catch (JsonGenerationException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		System.out.println("json string"+jsonString);
+		
+		ModelAndView model = new ModelAndView("jsonUserDetails");
+		model.addObject("userdetails", jsonString);
+		return model;
+	}
+
 	
 	
 	

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table
 public class User {
@@ -26,7 +28,15 @@ public class User {
     private String title;
     @Embedded
     private Address address;
+    
+/*    
+    @ManyToMany(mappedBy="users")
+    @JsonBackReference
+    private List<Phone> phones = new ArrayList();*/
+    
+    
     @ManyToMany(mappedBy="user", fetch=FetchType.LAZY)
+    @JsonBackReference
    private List<Phone> phones;
 	public User() {
 	}
@@ -78,7 +88,7 @@ public class User {
 	@Override
 	public String toString()
 	{
-	return String.format(this.id);
+	return String.format(this.id, this.firstname, this.lastname);
 	}
 
 }

@@ -12,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -23,11 +26,24 @@ public class Phone {
 	private String id;
     private String number; 
     private String description;
-    @ManyToMany(fetch=FetchType.LAZY)
+    
+    
+    
+    /*@ManyToMany(cascade = CascadeType.ALL)
+	  @JoinTable(
+	      name="USER_PHONE",
+	      joinColumns= {@JoinColumn(name="PHONE_ID", referencedColumnName="ID")},
+	      inverseJoinColumns= {@JoinColumn(name="USER_ID", referencedColumnName="ID")})
+	@JsonManagedReference*/
+    
+    
+    
+    @ManyToMany(cascade =CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinTable(
         name="Phone_User",
         joinColumns=@JoinColumn(name="Phone_ID", referencedColumnName="ID"),
         inverseJoinColumns=@JoinColumn(name="USER_ID", referencedColumnName="ID"))
+    @JsonManagedReference
     private List<User> user;
     @Embedded
     private Address address;
@@ -75,6 +91,6 @@ public class Phone {
 	@Override
 	public String toString()
 	{
-	return String.format(this.number);
+	return String.format(this.id, this.number);
 	}
 }

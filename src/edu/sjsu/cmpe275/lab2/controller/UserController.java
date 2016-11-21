@@ -70,11 +70,18 @@ public class UserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "user/{userid}"+"json=true", method = RequestMethod.GET )
+	@RequestMapping(value = "userJSON/{userid}", method = RequestMethod.GET )
 	public ModelAndView jsonUser(@PathVariable("userid")String userid){
 		
 		ObjectMapper mapper = new ObjectMapper();
-		User user = cU.getJsonById(userid);
+		System.out.println("user id "+userid);
+		/*User user = cU.getJsonById(userid);*/
+		
+		User user = cU.getObjectById(userid);
+		
+		
+		System.out.println("in controller user object"+ user);
+		
 		String jsonString = null;
 		
 		try {
@@ -88,6 +95,7 @@ public class UserController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		System.out.println("json string"+jsonString);
 		
 		ModelAndView model = new ModelAndView("jsonUserDetails");
 		model.addObject("userdetails", jsonString);
