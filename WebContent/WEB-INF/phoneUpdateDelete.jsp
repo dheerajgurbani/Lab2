@@ -26,9 +26,10 @@ Zip &nbsp; &nbsp;<input type="text" id="phonezip" name="zip" value="${phone.addr
 
 <c:forEach items="${phone.user}" var="phoneUser">
         	<br>
-        	<input type="radio" name="phoneUserElement" value="${phoneUser}">${phoneUser}
-</c:forEach> 
-<button type="submit" value="updateUser" onclick="updatePhoneDetails()">Remove User</button>
+${phoneUser}
+        	<button type="submit" name="phoneUserElement" value="${phoneUser}" onclick="updatePhoneDetails()">Remove User</button>
+        	</c:forEach> 
+
 
 <script>
 function removeUser()

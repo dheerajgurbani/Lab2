@@ -82,9 +82,7 @@ public class PhoneController {
 	}
 	
 	@RequestMapping(value="/phone/{phoneid}" ,method = RequestMethod.POST)
-	public ModelAndView updatePhone(
-											@PathVariable("phoneid") String phoneId,
-											@RequestParam Map<String, String> req){
+	public ModelAndView updatePhone(@PathVariable("phoneid") String phoneId,@RequestParam Map<String, String> req){
 		System.out.println("Phone Results are Shown here ----------->"+ req.get("number") );
 		System.out.println(req.get("userId"));
 		System.out.println("update post");
